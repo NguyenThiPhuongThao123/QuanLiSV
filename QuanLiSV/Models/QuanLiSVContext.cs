@@ -13,6 +13,8 @@ namespace QuanLiSV.Models
         }
         public virtual DbSet<SINHVIEN> SINHVIENs { get; set; }
         public virtual DbSet<LOP> LOPs { get; set; }
+        public virtual DbSet<NganhHoc> NganhHocs { get; set; }
+        public virtual DbSet<Khoa> Khoas { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

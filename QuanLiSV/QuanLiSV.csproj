@@ -144,9 +144,16 @@
     <Compile Include="Migrations\202104091622363_Create_Table_NganhHoc.Designer.cs">
       <DependentUpon>202104091622363_Create_Table_NganhHoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104091632353_Create_Table_Khoa.cs" />
+    <Compile Include="Migrations\202104091632353_Create_Table_Khoa.Designer.cs">
+      <DependentUpon>202104091632353_Create_Table_Khoa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Khoa.cs" />
+    <Compile Include="Models\KhoasController.cs" />
     <Compile Include="Models\LOP.cs" />
     <Compile Include="Models\NganhHoc.cs" />
+    <Compile Include="Models\NganhHocsController.cs" />
     <Compile Include="Models\QuanLiSVContext.cs" />
     <Compile Include="Models\SINHVIEN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -197,6 +204,16 @@
     <Content Include="Views\LOPs\Details.cshtml" />
     <Content Include="Views\LOPs\Edit.cshtml" />
     <Content Include="Views\LOPs\Index.cshtml" />
+    <Content Include="Views\Khoas\Create.cshtml" />
+    <Content Include="Views\Khoas\Delete.cshtml" />
+    <Content Include="Views\Khoas\Details.cshtml" />
+    <Content Include="Views\Khoas\Edit.cshtml" />
+    <Content Include="Views\Khoas\Index.cshtml" />
+    <Content Include="Views\NganhHocs\Create.cshtml" />
+    <Content Include="Views\NganhHocs\Delete.cshtml" />
+    <Content Include="Views\NganhHocs\Details.cshtml" />
+    <Content Include="Views\NganhHocs\Edit.cshtml" />
+    <Content Include="Views\NganhHocs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -223,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104091622363_Create_Table_NganhHoc.resx">
       <DependentUpon>202104091622363_Create_Table_NganhHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104091632353_Create_Table_Khoa.resx">
+      <DependentUpon>202104091632353_Create_Table_Khoa.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

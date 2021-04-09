@@ -1,0 +1,59 @@
+﻿@model QuanLiSV.Models.Khoa
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Khoa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tenlop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tenlop)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manghanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manghanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tennghanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tennghanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Makhoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Makhoa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenKhoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenKhoa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Malop }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
