@@ -1,0 +1,35 @@
+﻿@model QuanLiSV.Models.LOP
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LOP</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tenlop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tenlop)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manghanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manghanh)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Malop }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
