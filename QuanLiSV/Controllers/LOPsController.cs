@@ -6,110 +6,111 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using QuanLiSV.Models;
 
-namespace QuanLiSV.Models
+namespace QuanLiSV.Controllers
 {
-    public class KhoasController : Controller
+    public class LOPsController : Controller
     {
         private QuanLiSVContext db = new QuanLiSVContext();
 
-        // GET: Khoas
+        // GET: LOPs
         public ActionResult Index()
         {
             return View(db.LOPs.ToList());
         }
 
-        // GET: Khoas/Details/5
+        // GET: LOPs/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Khoa khoa = db.LOPs.Find(id);
-            if (khoa == null)
+            LOP lOP = db.LOPs.Find(id);
+            if (lOP == null)
             {
                 return HttpNotFound();
             }
-            return View(khoa);
+            return View(lOP);
         }
 
-        // GET: Khoas/Create
+        // GET: LOPs/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Khoas/Create
+        // POST: LOPs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Malop,Tenlop,Manghanh,Tennghanh,Makhoa,TenKhoa")] Khoa khoa)
+        public ActionResult Create([Bind(Include = "Malop,Tenlop,Manghanh")] LOP lOP)
         {
             if (ModelState.IsValid)
             {
-                db.LOPs.Add(khoa);
+                db.LOPs.Add(lOP);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(khoa);
+            return View(lOP);
         }
 
-        // GET: Khoas/Edit/5
+        // GET: LOPs/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Khoa khoa = db.LOPs.Find(id);
-            if (khoa == null)
+            LOP lOP = db.LOPs.Find(id);
+            if (lOP == null)
             {
                 return HttpNotFound();
             }
-            return View(khoa);
+            return View(lOP);
         }
 
-        // POST: Khoas/Edit/5
+        // POST: LOPs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Malop,Tenlop,Manghanh,Tennghanh,Makhoa,TenKhoa")] Khoa khoa)
+        public ActionResult Edit([Bind(Include = "Malop,Tenlop,Manghanh")] LOP lOP)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(khoa).State = EntityState.Modified;
+                db.Entry(lOP).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(khoa);
+            return View(lOP);
         }
 
-        // GET: Khoas/Delete/5
+        // GET: LOPs/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Khoa khoa = db.LOPs.Find(id);
-            if (khoa == null)
+            LOP lOP = db.LOPs.Find(id);
+            if (lOP == null)
             {
                 return HttpNotFound();
             }
-            return View(khoa);
+            return View(lOP);
         }
 
-        // POST: Khoas/Delete/5
+        // POST: LOPs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Khoa khoa = db.LOPs.Find(id);
-            db.LOPs.Remove(khoa);
+            LOP lOP = db.LOPs.Find(id);
+            db.LOPs.Remove(lOP);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

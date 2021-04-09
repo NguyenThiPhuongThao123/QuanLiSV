@@ -129,6 +129,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KhoasController.cs" />
+    <Compile Include="Controllers\LOPsController.cs" />
+    <Compile Include="Controllers\NganhHocsController.cs" />
+    <Compile Include="Controllers\SINHVIENsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -150,10 +154,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Khoa.cs" />
-    <Compile Include="Models\KhoasController.cs" />
     <Compile Include="Models\LOP.cs" />
     <Compile Include="Models\NganhHoc.cs" />
-    <Compile Include="Models\NganhHocsController.cs" />
     <Compile Include="Models\QuanLiSVContext.cs" />
     <Compile Include="Models\SINHVIEN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
