@@ -13,6 +13,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Masv)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Hoten)
         </th>
         <th>
@@ -25,22 +28,25 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hoten)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Diachi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Malop)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Masv }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Masv }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Masv })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.Raw(item.Masv)
+    </td>
+    <td>
+        @Html.Raw(item.Hoten)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Diachi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Malop)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Masv }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Masv }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Masv })
+    </td>
+</tr>
 }
 
 </table>

@@ -17,7 +17,7 @@ namespace QuanLiSV.Controllers
         // GET: NganhHocs
         public ActionResult Index()
         {
-            return View(db.LOPs.ToList());
+            return View(db.NganhHocs.ToList());
         }
 
         // GET: NganhHocs/Details/5
