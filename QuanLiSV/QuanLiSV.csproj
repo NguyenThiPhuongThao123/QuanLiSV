@@ -132,6 +132,7 @@
     <Compile Include="Controllers\KhoasController.cs" />
     <Compile Include="Controllers\LOPsController.cs" />
     <Compile Include="Controllers\NganhHocsController.cs" />
+    <Compile Include="Controllers\ReadExcel.cs" />
     <Compile Include="Controllers\SINHVIENsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

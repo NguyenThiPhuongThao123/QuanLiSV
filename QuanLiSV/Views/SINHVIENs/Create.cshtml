@@ -5,13 +5,23 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Cập Nhật Danh Sách Sinh Viên</h2>
 
+<-- cái code này em muốn up file ở mục nào thì em add vô đó -->
+    
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Action_Name", "Controller_Name", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        @Html.TextBox("file", "", new { type = "file" }) <br />
+        <input type="submit" value="Upload" />
+    </div>
+}
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>SINHVIEN</h4>
         <hr />
@@ -27,7 +37,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Hoten, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Hoten, new { @class = "ckeditor" } )
+                @Html.TextAreaFor(model => model.Hoten, new { @class = "ckeditor" })
                 @Html.ValidationMessageFor(model => model.Hoten, "", new { @class = "text-danger" })
             </div>
         </div>
