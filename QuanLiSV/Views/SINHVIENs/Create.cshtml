@@ -6,11 +6,7 @@
 }
 
 <h2>Cập Nhật Danh Sách Sinh Viên</h2>
-
-<-- cái code này em muốn up file ở mục nào thì em add vô đó -->
-    
-
-@using (Html.BeginForm("Action_Name", "Controller_Name", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Index", "SINHVIENs", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div>
         @Html.TextBox("file", "", new { type = "file" }) <br />

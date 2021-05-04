@@ -134,63 +134,34 @@ namespace QuanLiSV.Controllers
         }
         public ActionResult UploadFile(HttpPostedFileBase file)
         {
-            try
-            {
-                //upload file thanh cong va file co du lieu
-                if (file.ContentLength > 0)
-                {
-
-                    string _FileName = DateTime.Now.Year.ToString() + DateTime.Now.Date.ToString();
-                    //save file to server
-                    string _path = Path.Combine(Server.MapPath("~/Uploads/ExcelFile/Sinhviencapnhat.xlsx"), _FileName);
-                    //luu file len server
-                    file.SaveAs(_path);
-                    //Import data form excel to sqlserver
-                    CopyDataByBulk(p: excel.ReadDataFromExcelFile(_path));
-                    ViewBag.ThongBao = "Import du lieu thanh cong";
-                }
-            }
-            catch (Exception ex)
-            {
-                //neu upload file that bai
-                ViewBag.ThongBao = "Import du lieu that bai";
-            }
-            return View("Index");
-        }
-
-        private void CopyDataByBulk(object p)
-        {
-            throw new NotImplementedException();
-        }
-        private void UploadExcelFile(HttpPostedFileBase file)
-        {
             //dat ten cho file
-            string _FileName = "ruoucapnhat.xlsx";
+            string _FileName = "SINHVIEN.xlsx";
             //duong dan luu file
-            string _path = Path.Combine(Server.MapPath("~/Uploads/ExcelFile/Sinhviencapnhat.xlsx"), _FileName);
+            string _path = Path.Combine(Server.MapPath("~/Uploads/ExcelFile"), _FileName);
             //luu file len server
             file.SaveAs(_path);
-        }
-        //copy large data from datatable to sqlserver
-        private void CopyDataByBulk(DataTable dt)
-        {
-            //lay ket noi voi database luu trong file webconfig
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SINHVIENDbContext"].ConnectionString);
-            SqlBulkCopy bulkcopy = new SqlBulkCopy(con);
-            bulkcopy.DestinationTableName = "SINHVIENs";
-            bulkcopy.ColumnMappings.Add(0, "Masv");
-            bulkcopy.ColumnMappings.Add(1, "Hoten");
-            bulkcopy.ColumnMappings.Add(3, "Diachi");
-            bulkcopy.ColumnMappings.Add(4, "Malop");
-            con.Open();
-            bulkcopy.WriteToServer(dt);
-            con.Close();
-        }
 
+            //doc du lieu tu file excel
+            DataTable dt = ReadDataFromExcelFile(_path);
+            //   CopyDataByBulk(dt);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                SINHVIEN sv = new SINHVIEN();
+                sv.Masv = dt.Rows[i][0].ToString();
+                sv.Hoten = dt.Rows[i][1].ToString();
+                sv.Diachi = dt.Rows[i][2].ToString();
+                sv.Malop = dt.Rows[i][2].ToString();
+                db.SINHVIENs.Add(sv);
+                db.SaveChanges();
+            }
 
+            // CopyDataByBulk(excel.ReadDataFromExcelFile(_path));
+            return View("Index");
+        }
+        //upload file
         public DataTable ReadDataFromExcelFile(string filepath)
         {
-            string connectionString = " ";
+            string connectionString = "";
             string fileExtention = filepath.Substring(filepath.Length - 4).ToLower();
             if (fileExtention.IndexOf("xlsx") == 0)
             {
@@ -200,6 +171,8 @@ namespace QuanLiSV.Controllers
             {
                 connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filepath + ";Extended Properties=Excel 8.0";
             }
+
+            // Tạo đối tượng kết nối
             OleDbConnection oledbConn = new OleDbConnection(connectionString);
             DataTable data = null;
             try
@@ -233,14 +206,30 @@ namespace QuanLiSV.Controllers
             }
             return data;
         }
+
+
+        //copy large data from datatable to sqlserver
+        private void CopyDataByBulk(DataTable dt)
+        {
+            //lay ket noi voi database luu trong file webconfig
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["QuanLiSVContext"].ConnectionString);
+            SqlBulkCopy bulkcopy = new SqlBulkCopy(con);
+            bulkcopy.DestinationTableName = "SINHVIENs";
+            bulkcopy.ColumnMappings.Add(0, "Masv");
+            bulkcopy.ColumnMappings.Add(1, "Hoten");
+            bulkcopy.ColumnMappings.Add(2, "Diachi");
+            bulkcopy.ColumnMappings.Add(3, "Malop");
+            con.Open();
+            bulkcopy.WriteToServer(dt);
+            con.Close();
+        }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
-   // protected override void Dispose(bool disposing)
-   //     {
-   //         if (disposing)
-    //        {
-    //            db.Dispose();
-   //       }
-     //       base.Dispose(disposing);
-    //    }
-  //  }
 }
