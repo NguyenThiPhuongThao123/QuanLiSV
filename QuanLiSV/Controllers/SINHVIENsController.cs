@@ -18,7 +18,7 @@ namespace QuanLiSV.Controllers
     {
         private QuanLiSVContext db = new QuanLiSVContext();
 
-        ReadExcel excel = new ReadExcel();
+       /* ReadExcel excel = new ReadExcel();*/
 
         // GET: SINHVIENs
         public ActionResult Index()
@@ -135,29 +135,36 @@ namespace QuanLiSV.Controllers
         public ActionResult UploadFile(HttpPostedFileBase file)
         {
             //dat ten cho file
-            string _FileName = "SINHVIEN.xlsx";
+            string _FileName = "SINHVIEN.xls";
             //duong dan luu file
             string _path = Path.Combine(Server.MapPath("~/Uploads/ExcelFile"), _FileName);
             //luu file len server
             file.SaveAs(_path);
 
             //doc du lieu tu file excel
+
             DataTable dt = ReadDataFromExcelFile(_path);
-            //   CopyDataByBulk(dt);
+            /* CopyDataByBulk(dt);*/
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 SINHVIEN sv = new SINHVIEN();
                 sv.Masv = dt.Rows[i][0].ToString();
                 sv.Hoten = dt.Rows[i][1].ToString();
                 sv.Diachi = dt.Rows[i][2].ToString();
-                sv.Malop = dt.Rows[i][2].ToString();
+                sv.Malop = dt.Rows[i][3].ToString();
                 db.SINHVIENs.Add(sv);
                 db.SaveChanges();
             }
 
-            // CopyDataByBulk(excel.ReadDataFromExcelFile(_path));
-            return View("Index");
+           /* CopyDataByBulk(excel.ReadDataFromExcelFile(_path));*/
+            return RedirectToAction("Index");
         }
+
+        private void CopyDataByBulk(object v)
+        {
+            throw new NotImplementedException();
+        }
+
         //upload file
         public DataTable ReadDataFromExcelFile(string filepath)
         {
@@ -167,7 +174,7 @@ namespace QuanLiSV.Controllers
             {
                 connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source =" + filepath + ";Extended Properties=\"Excel 12.0 Xml;HDR=NO\"";
             }
-            else if (fileExtention.IndexOf("xls") == 0)
+            else if (fileExtention.IndexOf(".xls") == 0)
             {
                 connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filepath + ";Extended Properties=Excel 8.0";
             }
@@ -206,7 +213,29 @@ namespace QuanLiSV.Controllers
             }
             return data;
         }
+       /* public ActionResult UploadFile (HttpPostedFileBase file)
+        {
+            try
+            {
+                if (file.ContentLength > 0)
+                {
 
+                    string _FileName = DateTime.Now.Year.ToString() + DateTime.Now.Date.ToString();
+
+                    string _path = Path.Combine(Server.MapPath("~/Uploads/ExcelFile/"), _FileName);
+
+                    file.SaveAs(_path);
+
+                    CopyDataByBulk(ReadDataFromExcelFile(_path));
+                    ViewBag.ThongBao = "cap nhat thanh cong";
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ThongBao = "cap nhat thanh cong";
+            }
+            return RedirectToAction("Index");
+        }*/
 
         //copy large data from datatable to sqlserver
         private void CopyDataByBulk(DataTable dt)
