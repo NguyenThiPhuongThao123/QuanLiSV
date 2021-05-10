@@ -132,6 +132,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\accountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhoasController.cs" />
     <Compile Include="Controllers\LOPsController.cs" />
@@ -157,8 +158,18 @@
     <Compile Include="Migrations\202104091632353_Create_Table_Khoa.Designer.cs">
       <DependentUpon>202104091632353_Create_Table_Khoa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105101718196_account.cs" />
+    <Compile Include="Migrations\202105101718196_account.Designer.cs">
+      <DependentUpon>202105101718196_account.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105101722351_acountttt.cs" />
+    <Compile Include="Migrations\202105101722351_acountttt.Designer.cs">
+      <DependentUpon>202105101722351_acountttt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\account.cs" />
     <Compile Include="Models\AllowHtnlAttribute.cs" />
+    <Compile Include="Models\Encryption.cs" />
     <Compile Include="Models\Khoa.cs" />
     <Compile Include="Models\LOP.cs" />
     <Compile Include="Models\NganhHoc.cs" />
@@ -570,6 +581,8 @@
     <Content Include="Views\NganhHocs\Details.cshtml" />
     <Content Include="Views\NganhHocs\Edit.cshtml" />
     <Content Include="Views\NganhHocs\Index.cshtml" />
+    <Content Include="Views\accounts\Login.cshtml" />
+    <Content Include="Views\accounts\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -600,6 +613,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104091632353_Create_Table_Khoa.resx">
       <DependentUpon>202104091632353_Create_Table_Khoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105101718196_account.resx">
+      <DependentUpon>202105101718196_account.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105101722351_acountttt.resx">
+      <DependentUpon>202105101722351_acountttt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
