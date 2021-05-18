@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using QuanLiSV.Models;
 
 namespace QuanLiSV.Controllers
-{
+{ 
     public class KhoasController : Controller
     {
         private QuanLiSVContext db = new QuanLiSVContext();
