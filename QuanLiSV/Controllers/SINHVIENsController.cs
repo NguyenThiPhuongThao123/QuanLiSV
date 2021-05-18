@@ -18,7 +18,7 @@ namespace QuanLiSV.Controllers
     {
         private QuanLiSVContext db = new QuanLiSVContext();
 
-       /* ReadExcel excel = new ReadExcel();*/
+        /* ReadExcel excel = new ReadExcel();*/
 
         // GET: SINHVIENs
         public ActionResult Index()
