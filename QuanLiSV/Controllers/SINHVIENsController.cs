@@ -17,7 +17,6 @@ namespace QuanLiSV.Controllers
     public class SINHVIENsController : Controller
     {
         private QuanLiSVContext db = new QuanLiSVContext();
-
         /* ReadExcel excel = new ReadExcel();*/
 
         // GET: SINHVIENs

@@ -13,7 +13,6 @@ namespace QuanLiSV.Controllers
     public class LOPsController : Controller
     {
         private QuanLiSVContext db = new QuanLiSVContext();
-
         // GET: LOPs
         public ActionResult Index()
         {

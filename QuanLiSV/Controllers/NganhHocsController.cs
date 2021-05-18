@@ -13,7 +13,6 @@ namespace QuanLiSV.Controllers
     public class NganhHocsController : Controller
     {
         private QuanLiSVContext db = new QuanLiSVContext();
-
         // GET: NganhHocs
         public ActionResult Index()
         {

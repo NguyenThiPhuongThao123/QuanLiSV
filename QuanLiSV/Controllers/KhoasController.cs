@@ -13,7 +13,6 @@ namespace QuanLiSV.Controllers
     public class KhoasController : Controller
     {
         private QuanLiSVContext db = new QuanLiSVContext();
-
         // GET: Khoas
         public ActionResult Index()
         {
