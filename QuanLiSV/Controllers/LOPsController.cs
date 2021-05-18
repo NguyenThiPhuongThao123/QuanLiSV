@@ -19,7 +19,7 @@ namespace QuanLiSV.Controllers
         {
             return View(db.LOPs.ToList());
         }
-
+        [Authorize]
         // GET: LOPs/Details/5
         public ActionResult Details(string id)
         {
